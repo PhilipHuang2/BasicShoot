@@ -1,61 +1,94 @@
+int screenType;
+player peter = new player(400,400);
 void setup()
 {
-	size(500,500);
+	size(800,800);
 	background(0);
+        screenType = 0;
 }
 void draw()
 {
-	//middle divider
- 	stroke(255, 236, 94);
- 	strokeWeight(2);
- 	for (int b = 240; b < 261; b = b + 20) {
- 		for (int a = 0; a < 500; a = a+50) {
- 			line(a,b,a+40,b);
- 		}
- 	}
- 	//pavement
- 	noStroke();
- 	strokeWeight(0);
- 	fill(150);
- 	rect(0,0,500,96);
- 	rect(0,404,500,500);
- 	//Houses
- 	stroke(0);
- 	fill(227, 149, 118);
- 	rect(0,0,64,32);
- 	line(0, 32 , 500, 32);
- 	line(0, 468, 500, 468);
- 	//Cross Street
- 	stroke(255);
- 	fill(255);
- 	strokeWeight(2);
- 	for(int c = 96; c < 400; c = c + 170)
- 	{
- 		for(int d = 450; d < 500; d = d + 46)
- 		{
- 	 	 	line(d, c, d, c + 138);
- 		}
- 		for(int a = 0; a < 5; a++ )
- 		{
- 	 	 	rect(450, c + 12 + 24*a, 46, 12);
- 		}
+   if(screenType == 0)
+   {
 
- 	}
-}
-class vehicle
-{
-	int myX, myY;
-	vehicle()
-	{
-
-	}
+     peter.show();
+     peter.direction(0);
+   }
+   else
+   {
+     
+   }
 }
 
-class person
+class player
 {
-	int myX, myY;
-	person()
-	{
-
-	}
+  int playerX,playerY;
+  int coolDown;
+  boolean alive;
+  int size = 20;
+  player(int x, int y)
+  {
+    playerX = x;
+    playerY = y;
+    int coolDown = 0;
+    alive = true;
+    size = 40;
+  }
+  
+  void show()
+  {
+    noStroke();
+    fill(0,0,255);
+    ellipse(playerX,playerY,size,size);
+  }
+  
+  void direction(int x)
+  { 
+    fill(255);
+    if(x == 0)
+    {
+       rect(playerX + size/2 + 5,playerY - 5, 10,10 );
+       triangle(playerX + size/2 + 20,playerY + size/2 -5,
+             playerX + size/2 + 20,playerY - size/2 +5,
+             playerX + 3*size/2 , playerY);
+    }
+    else if (x == 0)
+    {
+       rect(playerX - (size/2 + 5),playerY + 5, -10, -10 );
+       triangle(playerX - (size/2 + 20),playerY - (size/2 -5),
+             playerX - (size/2 + 20) ,playerY + (size/2 - 5),
+             playerX - 3*size/2 , playerY);
+    }
+    else if(x == 0)
+    {
+      rect(playerX -5, playerY + size/2 + 5, 10,10);
+      triangle(playerX + size/2 -5, playerY + size/2 + 20,
+             playerX - size/2 +5, playerY + size/2 + 20,
+             playerX, playerY + 3*size/2);
+    }
+    else if (x == 0)
+    {
+       rect(playerX + 5,playerY - (size/2 + 5), -10, -10 );
+       triangle(playerX - (size/2 -5),playerY - (size/2 + 20),
+             playerX + (size/2 - 5),playerY - (size/2 + 20) ,
+             playerX, playerY - 3*size/2 );
+    }
+  }
+  
+  void typeA()
+  {
+    
+  }
+  
+  void typeB()
+  {
+    
+  }
+  
+  void typeC()
+  {
+    
+  }
+  
+  
 }
